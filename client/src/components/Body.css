@@ -1,0 +1,31 @@
+.body-container {
+    background-image: url('https://cdn.midjourney.com/7ff06684-0f2a-4b4d-8d69-abd3140c6572/0_0.webp'); /* Add your background image path */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .body-content {
+    text-align: center;
+    color: white;
+  }
+  
+  .body-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .body-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
