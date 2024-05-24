@@ -1,7 +1,7 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const EmpModel = require("./models/Emp");
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import EmpModel from "./models/Emp.mjs";
 
 const app = express();
 app.use(express.json());
@@ -19,7 +19,7 @@ app.post("/login", (req, res) => {
         res.json("the password is incorrect");
       }
     } else {
-      res.json("No record exist");
+      res.json("No record exists");
     }
   });
 });
@@ -30,6 +30,7 @@ app.post("/register", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-app.listen(3001, () => {
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
   console.log("server is running");
 });

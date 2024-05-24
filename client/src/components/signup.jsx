@@ -7,10 +7,17 @@ function Signup() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //password validation check
+    if (password.length < 6) {
+      setError("Password length should be at least 6 characters");
+      return;
+    }
+    //if password is correct then proceed
     axios
       .post("http://localhost:3001/register", { name, email, password })
       .then((res) => {
@@ -63,6 +70,7 @@ function Signup() {
               className="form-control rounded-0"
               onChange={(e) => setPassword(e.target.value)}
             />
+            {error && <p style={{ color: "red" }}>{error}</p>}
           </div>
           <button
             type="submit"
