@@ -5,14 +5,19 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (password.length < 6) {
+      setError("Password length should be at least 6 characters");
+      return;
+    }
     axios
       .post("http://localhost:3001/login", { email, password })
-      .then(res => {
-        console.log(res)
+      .then((res) => {
+        console.log(res);
         if (res.data === "success") {
           navigate("/home");
         }
@@ -50,6 +55,7 @@ function Login() {
               className="form-control rounded-0"
               onChange={(e) => setPassword(e.target.value)}
             />
+            {error && <p style={{ color: "red" }}>{error}</p>}
           </div>
           <button
             type="submit"
